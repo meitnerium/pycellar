@@ -157,7 +157,7 @@ print("TEST1")
 for r in res:
     print("TEST")
     print(r[1])
-    value.append({'Name': r[1],
+    value.append({'Name': r[0],
                   'qte': r[5],
                   'Millesime': r[6],
                   'Prix d\'achat': r[3]})
@@ -176,7 +176,7 @@ app.layout = html.Div([
         ),
         data=[
             dict(Model=i, **{param: value[i][param] for param in params})
-            for i in range(0, 4)
+            for i in range(0, 12)
         ],
         editable=True
     ),
