@@ -47,23 +47,7 @@ sql_create_wines_table = """ CREATE TABLE IF NOT EXISTS wines (
                          """
 
 
-def add_wine(wine):
-    """
-    Create a new task
-    :param conn:
-    :param task:
-    :return:
-    """
 
-    sql = ''' INSERT INTO wines(name,achat_date,prix_achat,saqid,qte,millesisme)
-              VALUES(?,?,?,?,?,?) '''
-    conn = create_connection(r"pythonsqlite.db")
-    cur = conn.cursor()
-    print(wine)
-    cur.execute(sql, wine)
-    conn.commit()
-    conn.close()
-    return cur.lastrowid
 
 #if conn is not None:
     # create projects table
@@ -72,32 +56,7 @@ create_table(sql_create_wines_table)
 #else:
 #    print("Error! cannot create the database connection.")
 
-wine1= ('Kendall-Jackson Chardonnay Vintners Reserve','2020-02-19','18.85',13298379,2,2017)
-wine2= ('Chateau Clarke Listrac-Medoc','2020-02-19','39.85',10677550,2,2015)
-wine3= ('William Fevre Chablis Les Champs Royaux','2020-02-19','39.85',10677550,3,2017)
-wine4= ('J.Baumer Riesling','2020-02-19','16.85',10677550,2,2018)
-wine5= ('Champagne Leclerc','2020-02-19','38.00',11111111,3,1900)
-wine6= ('Colleziore','2020-02-19','13.00',11111111,1,2017)
-wine7= ('Louderne','2020-02-19','1.00',11111111,3,1900)
-wine8= ('Louderne','2020-02-19','1.00',11111111,3,1900)
-wine9= ('Rocato','2020-02-19','45.00',11111111,2,1900)
-wine10= ('Carpineto','2020-02-19','19.00',11111111,2,1900)
-wine11= ('Farnito','2020-02-19','29.00',11111111,2,1900)
-wine12= ('St-Thomas','2020-02-19','26.15',927830,3,2017)
-#if conn is not None:
-    # create projects table
-add_wine(wine1)
-add_wine(wine2)
-add_wine(wine3)
-add_wine(wine4)
-add_wine(wine5)
-add_wine(wine6)
-add_wine(wine7)
-add_wine(wine8)
-add_wine(wine9)
-add_wine(wine10)
-add_wine(wine11)
-add_wine(wine12)
+
 
 #else:
 #    print("Error! cannot create the database connection.")
@@ -111,7 +70,7 @@ import pandas as pd
 
 import requests
 
-x = requests.get("https://www.saq.com/fr/13298379?q=13298379")
+#x = requests.get("https://www.saq.com/fr/13298379?q=13298379")
 #print(x.text)
 
 #app.layout = html.Div(children=[
@@ -152,9 +111,11 @@ def get_wines():
 
 
 res = get_wines()
-print(res)
-print("TEST1")
+#print(res.count())
+#print("TEST1")
+numvin=0
 for r in res:
+    numvin=numvin+1
     print("TEST")
     print(r[1])
     value.append({'Name': r[1],
@@ -167,7 +128,9 @@ for r in res:
 #               'Prix d\'achat' : '18.85'}
 #)
 
-
+print("TTTTTTEEEEEEEESSSSSTTTTTTTTTTT")
+print(len(res))
+print(value[:])
 app.layout = html.Div([
     dash_table.DataTable(
         id='table-editing-simple',
@@ -176,7 +139,7 @@ app.layout = html.Div([
         ),
         data=[
             dict(Model=i, **{param: value[i][param] for param in params})
-            for i in range(0, 12)
+            for i in range(0, numvin)
         ],
         editable=True,
         sort_action = "native",
