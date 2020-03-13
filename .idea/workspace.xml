@@ -34,6 +34,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager" selected="Python.inventory">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
@@ -201,7 +202,8 @@
       <workItem from="1583631455947" duration="7776000" />
       <workItem from="1583675226694" duration="7163000" />
       <workItem from="1583842576257" duration="2388000" />
-      <workItem from="1584068382807" duration="3377000" />
+      <workItem from="1584068382807" duration="3543000" />
+      <workItem from="1584072376513" duration="682000" />
     </task>
     <servers />
   </component>
@@ -229,10 +231,14 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state width="1620" height="269" key="GridCell.Tab.0.right/0.0.1680.1010@0.0.1680.1010" timestamp="1583677325534" />
-    <state x="548" y="334" key="com.intellij.ide.util.TipDialog" timestamp="1584068390179">
+    <state x="343" y="151" key="SettingsEditor" timestamp="1584072272543">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="548" y="334" key="com.intellij.ide.util.TipDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1584068390179" />
+    <state x="343" y="151" key="SettingsEditor/0.0.1680.1010@0.0.1680.1010" timestamp="1584072272543" />
+    <state x="548" y="334" key="com.intellij.ide.util.TipDialog" timestamp="1584072547431">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state x="548" y="334" key="com.intellij.ide.util.TipDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1584072547431" />
     <state x="503" y="221" width="672" height="678" key="search.everywhere.popup" timestamp="1583719850287">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>

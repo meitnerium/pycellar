@@ -6,12 +6,12 @@ from sqlite3 import Error
 class Mywine():
     def __init__(self):
         self.dbfile = "mywine.db"
-        if os.isfile(self.dbfile):
+        if os.path.isfile(self.dbfile):
             print("File exist")
         else:
             self.createdb()
 
-    def create_connection(db_file):
+    def create_connection(self,db_file):
         """ create a database connection to the SQLite database
             specified by db_file
         :param db_file: database file
@@ -35,25 +35,33 @@ class Mywine():
 
                                  """
         conn = self.create_connection(self.dbfile)
+        try:
+            c = conn.cursor()
+            c.execute(sql_create_wines_table)
+        except Error as e:
+            print(e)
+        conn.close()
 
 #TODO verifier que le vin (barcode) n'existe pas deja dans la db
-        def add_wine(barcode):
-            """
-            Create a new task
-            :param conn:
-            :param task:
-            :return:
-            """
+    def add_wine(self,barcode):
+        """
+        Create a new task
+        :param conn:
+        :param task:
+        :return:
+        """
 
-            sql = ''' INSERT INTO wines(1,barcode)
-                      VALUES(?,?) '''
-            conn = self.create_connection(self.dbfile)
-            cur = conn.cursor()
+        sql = ''' INSERT INTO mywines(qte,barcode)
+                  VALUES(?,?) '''
+        conn = self.create_connection(self.dbfile)
+        cur = conn.cursor()
 
-            cur.execute(sql, barcode)
-            conn.commit()
-            conn.close()
-            return cur.lastrowid
+        cur.execute(sql, barcode)
+        conn.commit()
+        conn.close()
+        return cur.lastrowid
+
+mywine = Mywine()
 
 class Application(tk.Frame):
     def __init__(self, master=None):
@@ -79,6 +87,7 @@ class Application(tk.Frame):
         for wine in wines.split():
             print("test")
             print(wine)
+            mywine.add_wine(wine)
 
         print("hi there, everyone!")
 
