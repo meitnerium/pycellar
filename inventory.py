@@ -50,13 +50,15 @@ class Mywine():
         :param task:
         :return:
         """
-
-        sql = ''' INSERT INTO mywines(qte,barcode)
+        print("barcode")
+        print(barcode)
+        sql = ''' INSERT INTO mywines (qte,barcode)
                   VALUES(?,?) '''
         conn = self.create_connection(self.dbfile)
         cur = conn.cursor()
-
-        cur.execute(sql, barcode)
+        data = ('1', barcode)
+        cur.execute(sql, data )
+        #cur.execute(sql, 12345)
         conn.commit()
         conn.close()
         return cur.lastrowid
@@ -87,7 +89,7 @@ class Application(tk.Frame):
         for wine in wines.split():
             print("test")
             print(wine)
-            mywine.add_wine(wine)
+            mywine.add_wine(str(wine))
 
         print("hi there, everyone!")
 
